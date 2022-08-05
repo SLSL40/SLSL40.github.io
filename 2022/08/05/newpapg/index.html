@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>云桌面逻辑架构及物理架构 | Record</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="逻辑架构设计：云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层。 其中虚拟桌面层，是为最终用户提供服务的虚拟桌面资源层，分为基础架构组件和虚拟桌面资源池。基础架构组件的作用是虚拟桌面的管理组件，实现用户登录认证、桌面呈现、资源分配、会话管理、策略配置等等基础功能，虚拟桌面资源，即最终向用户交付使用的虚拟桌面操作系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云桌面逻辑架构及物理架构">
+<meta property="og:url" content="https://sl40.top/2022/08/05/newpapg/index.html">
+<meta property="og:site_name" content="Record">
+<meta property="og:description" content="逻辑架构设计：云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层。 其中虚拟桌面层，是为最终用户提供服务的虚拟桌面资源层，分为基础架构组件和虚拟桌面资源池。基础架构组件的作用是虚拟桌面的管理组件，实现用户登录认证、桌面呈现、资源分配、会话管理、策略配置等等基础功能，虚拟桌面资源，即最终向用户交付使用的虚拟桌面操作系统。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-05T02:04:39.000Z">
+<meta property="article:modified_time" content="2022-08-05T02:50:33.659Z">
+<meta property="article:author" content="世灵">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Record" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/头像.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">世灵</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/头像.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-newpapg" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/05/newpapg/" class="article-date">
+  	<time datetime="2022-08-05T02:04:39.000Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      云桌面逻辑架构及物理架构
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>逻辑架构设计：<br>云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层云桌面平台总体架构分为终端层、安全接入层、虚拟桌面层。</p>
+<p>其中虚拟桌面层，是为最终用户提供服务的虚拟桌面资源层，分为基础架构组件和虚拟桌面资源池。<br>基础架构组件的作用是虚拟桌面的管理组件，实现用户登录认证、桌面呈现、资源分配、会话管理、策略配置等等基础功能，<br>虚拟桌面资源，即最终向用户交付使用的虚拟桌面操作系统。</p>
+<span id="more"></span>
+<p>1.	<br>系统架构<br>2.	<br>在如上系统架构中，其中组件说明如下：<br>接入端<br>1.	<br>接入端为各种终端设备，包括台式机，瘦客户端，笔记本以及PAD、智能手机等，在此项目的接入设备为瘦客户机或台式机，将安装云桌面接收程序，<br>通过此程序可与云桌面建立连接，进行瘦客户机业务受理。<br>安全接入网关<br>配置2台构成高可用性的安全接入云网关，主要有三个功能：<br>1.	<br>安全接入网关功能，负责把所有从终端设备网段到后台服务器之间的通讯封装在使用443端口的加密通道中，并进行单点登录认证。<br>2.	<br>负载均衡功能，为桌面云门户站点和管理服务器提供负载均衡支持。<br>3.	<br>代理功能，在internet访问场景中，无需为每个云桌面配置防火墙端口，配置一个代理端口即可，能够大量减少防火墙端口配置的数量。</p>
+<p>基础架构服务器<br>1.	<br>其中包含10台服务器，将通过服务器虚拟化方案（XenServer&#x2F;Hyper-V&#x2F;Vmware）提供，其中包括：<br>桌面云门户站点服务器（2台负载均衡）<br>    门户站点服务器将提供终用户访问Portal,用户通过账号&#x2F;密码验证后,将在门户站点页面上获取自己的云桌面,点击属于自己的云桌面即可访问云桌面系统。<br>桌面交付控制服务器（2台负载均衡）<br>    桌面交付控制服务器提供云桌面集中管理与交付功能，能够提供云桌面的集中部署，用户分配，云桌面集中维护管理和向用户交付桌面等功能。<br>Microsoft SQL Server服务器（3台镜像）<br>    为桌面云站点服务器和管理服务器提供数据库功能。<br>许可证服务器（1台）<br>    提供许可证管理。<br>域控制器服务器（2台高可用）<br>域控制器为云桌面提供LDAP账户管理功能，同时承担DNS服务器与DHCP服务器功能。<br>服务器虚拟化资源池<br>服务器虚拟化资源池将由物理服务器进行虚拟化形成计算资源池，外接FC SAN存储，承载云桌面系统中基础架构服务器和虚拟桌面的运行。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/08/04/newpapername/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于PS</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 世灵
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
